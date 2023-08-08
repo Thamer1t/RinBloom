@@ -33,6 +33,41 @@ const logger = require("@/log/index.js");
 const dbdata = require("@/config/dbdata.js");
 const BloomAuthy = require("@/auth/BloomAuthy.js");
 const mFolders = fs.readdirSync("./server/commands");
+const Browsers = {
+  macOS: (platform) => {
+    // Define the macOS browser configuration
+    if (platform === 'Desktop') {
+      return {
+        name: 'Safari',
+        userAgent:
+          'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Safari/605.1.15',
+        viewport: {
+          width: 1280,
+          height: 800,
+          deviceScaleFactor: 1,
+          isMobile: false,
+          hasTouch: false,
+          isLandscape: false,
+        },
+      };
+    } else if (platform === 'Mobile') {
+      return {
+        name: 'Mobile Safari',
+        userAgent:
+          'Mozilla/5.0 (iPhone; CPU iPhone OS 14_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/14.0.3 Mobile/15E148 Safari/604.1',
+        viewport: {
+          width: 375,
+          height: 812,
+          deviceScaleFactor: 3,
+          isMobile: true,
+          hasTouch: true,
+          isLandscape: false,
+        },
+      };
+    }
+  },
+};
+
 const {
   default: BloomerClient,
   useMultiFileAuthState,
@@ -135,7 +170,7 @@ async function magneum() {
     defaultQueryTimeoutMs: undefined,
     browser: Browsers.macOS("Desktop"),
     generateHighQualityLinkPreview: true,
-   browser: ["BloomBot", "Chrome", "1.0.0"],
+  // browser: ["BloomBot", "Chrome", "1.0.0"],
     getMessage: async (key) => {
       if (store) {
         const msg = await store.loadMessage(key.remoteJid, key.id, undefined);
