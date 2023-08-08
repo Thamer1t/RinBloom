@@ -29,10 +29,10 @@ RUN npm install -g yarn
 RUN hash -r
 
 # Clone the repository
-RUN git clone https://github.com/magneum/BloomBot
+RUN git clone https://github.com/Thamer1t/RinBloom
 
 # Set the working directory
-WORKDIR /BloomBot
+WORKDIR /RinBloom
 
 # Install project dependencies using Yarn
 RUN yarn
