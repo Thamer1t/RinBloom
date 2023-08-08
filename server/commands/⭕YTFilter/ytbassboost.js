@@ -125,8 +125,8 @@ module.exports = async (
               }
 
 *🧀YouTube Filter:* ${currFile}
-*🎵Title:* ${response.data.youtube_search[0].TITLE}
-*👁️Views:* ${response.data.youtube_search[0].VIEWS}  
+*🎵العنوان:* ${response.data.youtube_search[0].TITLE}
+*👁️المشاهدات:* ${response.data.youtube_search[0].VIEWS}  
 *⏱️Duration:* ${response.data.youtube_search[0].DURATION_FULL}
 *🔗Link:* ${mediaUrl}
 *✍️Author:* ${authorName}
